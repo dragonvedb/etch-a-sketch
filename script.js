@@ -7,9 +7,13 @@ function generateCanvas(res) {
     for (let i = 0; i < pixelNumber; i++) {
         const pixel = document.createElement('div');
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px;`;
-        //pixel.textContent = `${i+1}`
+
+        pixel.addEventListener('mouseout', (e) => {
+            e.target.style.background = 'black';
+        });
+
         container.appendChild(pixel);
     }
 }
 
-generateCanvas(16);
+generateCanvas(25);
