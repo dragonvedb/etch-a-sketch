@@ -55,8 +55,9 @@ function generateCanvas(res) {
 
     for (let i = 0; i < pixelNumber; i++) {
         const pixel = document.createElement('div');
+        pixel.setAttribute('id', `${i+1}`)
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px;`;
-
+        pixel.textContent = `${pixel.id}`
         pixel.addEventListener('mouseover', (e) => {
             e.target.style.background = currentColor;
 
