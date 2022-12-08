@@ -18,7 +18,7 @@ function generateCanvas(res) {
         const pixel = document.createElement('div');
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px;`;
 
-        pixel.addEventListener('mouseout', (e) => {
+        pixel.addEventListener('mouseover', (e) => {
             e.target.style.background = 'black';
         });
 
