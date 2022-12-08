@@ -17,6 +17,15 @@ for (const button of btnSetCanvas) {
 
 const btnSetColor = document.querySelectorAll('.set-color')
 for (const button of btnSetColor) {
+    
+    if (button.id === 'rainbow') {
+        button.addEventListener('click', (e) => {
+            rainbowPen = true;
+            currentColor = randomColor();
+        })
+        continue;
+    }
+
     button.setAttribute('style', `color: ${button.id};`)
 
     button.addEventListener('click', (e) => {
@@ -26,6 +35,11 @@ for (const button of btnSetColor) {
 
 let currentResolution = 16
 let currentColor = 'black';
+let rainbowPen = false;
+
+let randomColor = function() {
+    return `#${Math.floor(Math.random()*16777215).toString(16)}`;
+}
 
 function generateCanvas(res) {
     if (res === null || res <= 0 || !(Number.isInteger(parseInt(res)))) return;
@@ -44,6 +58,8 @@ function generateCanvas(res) {
 
         pixel.addEventListener('mouseover', (e) => {
             e.target.style.background = currentColor;
+
+            if (rainbowPen === true) currentColor = randomColor();
         });
 
         container.appendChild(pixel);
