@@ -29,6 +29,7 @@ for (const button of btnSetColor) {
     button.setAttribute('style', `color: ${button.id};`)
 
     button.addEventListener('click', (e) => {
+        rainbowPen = false;
         currentColor = e.target.id;
     })
 }
