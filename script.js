@@ -15,7 +15,17 @@ for (const button of btnSetCanvas) {
     })
 }
 
+const btnSetColor = document.querySelectorAll('.set-color')
+for (const button of btnSetColor) {
+    button.setAttribute('style', `color: ${button.id};`)
+
+    button.addEventListener('click', (e) => {
+        currentColor = e.target.id;
+    })
+}
+
 let currentResolution = 16
+let currentColor = 'black';
 
 function generateCanvas(res) {
     if (res === null || res <= 0 || !(Number.isInteger(parseInt(res)))) return;
@@ -33,7 +43,7 @@ function generateCanvas(res) {
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px;`;
 
         pixel.addEventListener('mouseover', (e) => {
-            e.target.style.background = 'black';
+            e.target.style.background = currentColor;
         });
 
         container.appendChild(pixel);
