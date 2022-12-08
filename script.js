@@ -57,14 +57,26 @@ function generateCanvas(res) {
         const pixel = document.createElement('div');
         pixel.setAttribute('id', `${i+1}`)
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px;`;
-        pixel.textContent = `${pixel.id}`
         pixel.addEventListener('mouseover', (e) => {
             e.target.style.background = currentColor;
 
             if (rainbowPen === true) currentColor = randomColor();
         });
+        pixel.addEventListener('click', (e) => {
+            colorFill(e.target.id, e.target.style.backgroundColor);
+        });
+
 
         container.appendChild(pixel);
+    }
+}
+
+function colorFill(startPixel, targetColor) {
+    const fillArray = [startPixel];
+
+    for (const id of fillArray) {
+        const pixel = document.querySelector(`[id='${id}']`);
+        pixel.style.backgroundColor = targetColor;
     }
 }
 
