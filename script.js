@@ -6,6 +6,9 @@ btnNewCanvas.addEventListener('click', () => {
 })
 
 function generateCanvas(res) {
+    if (res === null || res <= 0 || !(Number.isInteger(parseInt(res)))) return;
+    if (res > 80) res = 80;
+
     container.innerHTML = "";
 
     const pixelSize = 800 / res;
