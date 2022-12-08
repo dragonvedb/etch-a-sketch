@@ -1,9 +1,16 @@
 const container = document.querySelector('#container')
 
-const btnNewCanvas = document.querySelector('#newCanvas')
+const btnNewCanvas = document.querySelector('#new-canvas')
 btnNewCanvas.addEventListener('click', () => {
     generateCanvas(prompt("HOW BIG?"));
 })
+
+const btnSetCanvas = document.querySelectorAll('.set-canvas')
+for (const button of btnSetCanvas) {
+    button.addEventListener('click', (e) => {
+        generateCanvas(e.target.id);
+    })
+}
 
 function generateCanvas(res) {
     if (res === null || res <= 0 || !(Number.isInteger(parseInt(res)))) return;
