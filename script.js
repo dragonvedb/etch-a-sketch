@@ -1,6 +1,13 @@
 const container = document.querySelector('#container')
 
+const btnNewCanvas = document.querySelector('#newCanvas')
+btnNewCanvas.addEventListener('click', () => {
+    generateCanvas(prompt("HOW BIG?"));
+})
+
 function generateCanvas(res) {
+    container.innerHTML = "";
+
     const pixelSize = 800 / res;
     const pixelNumber = res * res;
 
@@ -16,4 +23,4 @@ function generateCanvas(res) {
     }
 }
 
-generateCanvas(25);
+generateCanvas(16);
