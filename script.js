@@ -5,6 +5,9 @@ btnNewCanvas.addEventListener('click', () => {
     generateCanvas(prompt("HOW BIG?"));
 })
 
+const btnReset = document.querySelector('#reset')
+btnReset.addEventListener('click', () => generateCanvas(currentResolution))
+
 const btnSetCanvas = document.querySelectorAll('.set-canvas')
 for (const button of btnSetCanvas) {
     button.addEventListener('click', (e) => {
@@ -12,9 +15,13 @@ for (const button of btnSetCanvas) {
     })
 }
 
+let currentResolution = 16
+
 function generateCanvas(res) {
     if (res === null || res <= 0 || !(Number.isInteger(parseInt(res)))) return;
     if (res > 80) res = 80;
+
+    currentResolution = res;
 
     container.innerHTML = "";
 
