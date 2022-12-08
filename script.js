@@ -72,12 +72,23 @@ function generateCanvas(res) {
 }
 
 function colorFill(startPixel, targetColor) {
-    const fillArray = [startPixel];
+    const fillArray = [parseInt(startPixel)];
 
-    for (const id of fillArray) {
-        const pixel = document.querySelector(`[id='${id}']`);
-        pixel.style.backgroundColor = targetColor;
-    }
+    do {
+        const id = fillArray[0];
+
+        const pixel = document.getElementById(`${id}`);
+        pixel.style.backgroundColor = 'red';
+        const pixelRight = document.getElementById(`${id + 1}`);
+
+        if (pixelRight.style.backgroundColor === targetColor) {
+            fillArray.push(id + 1);
+        };
+
+        fillArray.shift();
+    } while (fillArray.length > 0)
+
+    return;
 }
 
 generateCanvas(16);
