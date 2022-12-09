@@ -74,16 +74,37 @@ function generateCanvas(res) {
 function colorFill(startPixel, targetColor) {
     const fillArray = [parseInt(startPixel)];
 
+    function checkPixel(id) {
+        if (document.getElementById(`${id}`)) {
+            var newPixel = document.getElementById(`${id}`);
+        } else return;
+
+        if (newPixel.style.backgroundColor === targetColor) {
+            return fillArray.push(id);
+        }
+    }
+
+   // HERE THE FILL OVERFLOWS INTO THE NEXT ROW
+   // DO SOMETHING LIKE 'if id % currentResolution = either 0 or 1, continue'
+   
     do {
         const id = fillArray[0];
 
         const pixel = document.getElementById(`${id}`);
         pixel.style.backgroundColor = 'red';
+
+        checkPixel(id - currentResolution)
+
+       /* const pixelUp = document.getElementById(`${id - currentResolution}`);
         const pixelRight = document.getElementById(`${id + 1}`);
 
+        if (pixelUp.style.backgroundColor === targetColor) {
+            fillArray.push(id - currentResolution);
+        };
+        
         if (pixelRight.style.backgroundColor === targetColor) {
             fillArray.push(id + 1);
-        };
+        };*/
 
         fillArray.shift();
     } while (fillArray.length > 0)
