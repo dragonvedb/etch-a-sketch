@@ -1,6 +1,6 @@
 const html = document.querySelector('html')
 const container = document.querySelector('#container')
-
+container.addEventListener('mouseleave', () => mouseDown = false)
 
 const btnNewCanvas = document.querySelector('#new-canvas')
 btnNewCanvas.addEventListener('click', () => {
