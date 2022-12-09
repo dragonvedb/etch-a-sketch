@@ -13,7 +13,7 @@ btnReset.addEventListener('click', () => generateCanvas(currentResolution))
 const btnSetCanvas = document.querySelectorAll('.set-canvas')
 for (const button of btnSetCanvas) {
     button.addEventListener('click', (e) => {
-        generateCanvas(e.target.id);
+        generateCanvas(e.target.dataset.res);
     })
 }
 
