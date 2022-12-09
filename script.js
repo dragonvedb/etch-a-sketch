@@ -56,7 +56,7 @@ function generateCanvas(res) {
     for (let i = 0; i < pixelNumber; i++) {
         const pixel = document.createElement('div');
         pixel.setAttribute('id', `${i+1}`)
-        pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px;`;
+        pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
         pixel.addEventListener('mouseover', (e) => {
             e.target.style.background = currentColor;
 
@@ -84,27 +84,16 @@ function colorFill(startPixel, targetColor) {
         }
     }
 
-   // HERE THE FILL OVERFLOWS INTO THE NEXT ROW
-   // DO SOMETHING LIKE 'if id % currentResolution = either 0 or 1, continue'
-   
     do {
         const id = fillArray[0];
 
         const pixel = document.getElementById(`${id}`);
         pixel.style.backgroundColor = 'red';
 
-        checkPixel(id - currentResolution)
-
-       /* const pixelUp = document.getElementById(`${id - currentResolution}`);
-        const pixelRight = document.getElementById(`${id + 1}`);
-
-        if (pixelUp.style.backgroundColor === targetColor) {
-            fillArray.push(id - currentResolution);
-        };
-        
-        if (pixelRight.style.backgroundColor === targetColor) {
-            fillArray.push(id + 1);
-        };*/
+        checkPixel(id - currentResolution);
+        checkPixel(id + currentResolution);
+        if (!(id % currentResolution === 0)) checkPixel(id + 1);
+        if (!(id % currentResolution === 1)) checkPixel(id - 1);
 
         fillArray.shift();
     } while (fillArray.length > 0)
