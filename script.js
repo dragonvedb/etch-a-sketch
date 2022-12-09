@@ -1,4 +1,6 @@
+const html = document.querySelector('html')
 const container = document.querySelector('#container')
+
 
 const btnNewCanvas = document.querySelector('#new-canvas')
 btnNewCanvas.addEventListener('click', () => {
@@ -38,6 +40,8 @@ let currentResolution = 16
 let currentColor = 'black';
 let rainbowPen = false;
 
+let mouseDown = false;
+
 let randomColor = function() {
     return `#${Math.floor(Math.random()*16777215).toString(16)}`;
 }
@@ -57,14 +61,24 @@ function generateCanvas(res) {
         const pixel = document.createElement('div');
         pixel.setAttribute('id', `${i+1}`)
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
-        pixel.addEventListener('mouseover', (e) => {
+        
+        pixel.addEventListener('mousedown', (e) => {
             e.target.style.background = currentColor;
-
+            mouseDown ? (mouseDown = false) : (mouseDown = true);
             if (rainbowPen === true) currentColor = randomColor();
+        })
+       
+        pixel.addEventListener('mouseover', (e) => {
+            if (mouseDown === true) {
+                e.target.style.background = currentColor;
+                if (rainbowPen === true) currentColor = randomColor();
+            };
         });
-        pixel.addEventListener('click', (e) => {
+        
+
+        /*pixel.addEventListener('click', (e) => {
             colorFill(e.target.id, e.target.style.backgroundColor);
-        });
+        });*/
 
 
         container.appendChild(pixel);
