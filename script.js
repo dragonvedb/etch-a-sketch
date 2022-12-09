@@ -17,6 +17,11 @@ for (const button of btnSetCanvas) {
     })
 }
 
+const btnFillBucket = document.querySelector('#fill-bucket');
+btnFillBucket.addEventListener('click', () => {
+    fillBucket ? (fillBucket = false) : (fillBucket = true);
+})
+
 const btnSetColor = document.querySelectorAll('.set-color')
 for (const button of btnSetColor) {
     
@@ -39,6 +44,8 @@ for (const button of btnSetColor) {
 let currentResolution = 16
 let currentColor = 'black';
 let rainbowPen = false;
+let fillBucket = false
+
 
 let mouseDown = false;
 
@@ -63,6 +70,11 @@ function generateCanvas(res) {
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
         
         pixel.addEventListener('mousedown', (e) => {
+            if (fillBucket) {
+                colorFill(e.target.id, e.target.style.backgroundColor);
+                return;
+            }
+            
             e.target.style.background = currentColor;
             mouseDown ? (mouseDown = false) : (mouseDown = true);
             if (rainbowPen === true) currentColor = randomColor();
@@ -102,7 +114,7 @@ function colorFill(startPixel, targetColor) {
         const id = fillArray[0];
 
         const pixel = document.getElementById(`${id}`);
-        pixel.style.backgroundColor = 'red';
+        pixel.style.backgroundColor = currentColor;
 
         checkPixel(id - currentResolution);
         checkPixel(id + currentResolution);
