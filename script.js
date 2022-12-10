@@ -48,8 +48,17 @@ for (const button of btnSetColor) {
     })
 }
 
+const btnSetInstrument = document.querySelectorAll('.set-instrument')
+for (const button of btnSetInstrument) {
+    button.addEventListener('click', (e) => {
+        currentInstrument = e.target.id;
+    })
+}
+
 let currentResolution = 16;
 let currentColor = 'black';
+let currentInstrument = 'pen'
+
 let rainbowPen = false;
 let fillBucket = false;
 let shader = false;
@@ -78,22 +87,26 @@ function generateCanvas(res) {
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
         
         pixel.addEventListener('click', (e) => {
-
-            if (fillBucket) {
-                colorFill(e.target.id, e.target.style.backgroundColor);
-                return;
+            if (currentInstrument === 'pen') {
+                e.target.style.background = currentColor;
+                
             }
             
-            if (shader) {
+            if (currentInstrument === 'shader') {
                 shade(e.target.id);
                 mouseDown ? (mouseDown = false) : (mouseDown = true);
-            }
+            };
+            
+            if (currentInstrument === 'fillBucket') {
+                colorFill(e.target.id, e.target.style.backgroundColor);
+                return;
+            };
             
             e.target.style.background = currentColor;
 
             if (!(mouseDown)) mouseDown = true
             if (rainbowPen === true) currentColor = randomColor();
-        })
+        });
        
         pixel.addEventListener('mouseover', (e) => {
             if (mouseDown === true) {
