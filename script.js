@@ -56,7 +56,8 @@ let shader = false;
 let mouseDown = false;
 
 let randomColor = function() {
-    return `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    return `hsl(${Math.floor(Math.random()*360)}, 100%, 70%)`
+    //return `#${Math.floor(Math.random()*16777215).toString(16)}`;
 }
 
 function generateCanvas(res) {
@@ -85,7 +86,6 @@ function generateCanvas(res) {
             if (shader) {
                 shade(e.target.id);
                 mouseDown ? (mouseDown = false) : (mouseDown = true);
-                return;
             }
             
             e.target.style.background = currentColor;
@@ -97,7 +97,6 @@ function generateCanvas(res) {
             if (mouseDown === true) {
                 if (shader === true) {
                     shade(e.target.id);
-                    return;
                 };
 
                 e.target.style.background = currentColor;
