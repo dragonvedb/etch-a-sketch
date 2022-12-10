@@ -1,6 +1,8 @@
 const html = document.querySelector('html')
 const container = document.querySelector('#container')
-container.addEventListener('mouseleave', () => mouseDown = false)
+html.addEventListener('mousedown', () => {
+    if (mouseDown) mouseDown = false;
+})
 
 const btnNewCanvas = document.querySelector('#new-canvas')
 btnNewCanvas.addEventListener('click', () => {
@@ -75,7 +77,7 @@ function generateCanvas(res) {
         pixel.setAttribute('id', `${i+1}`)
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
         
-        pixel.addEventListener('mousedown', (e) => {
+        pixel.addEventListener('click', (e) => {
 
             if (fillBucket) {
                 colorFill(e.target.id, e.target.style.backgroundColor);
@@ -88,7 +90,8 @@ function generateCanvas(res) {
             }
             
             e.target.style.background = currentColor;
-            mouseDown ? (mouseDown = false) : (mouseDown = true);
+
+            if (!(mouseDown)) mouseDown = true
             if (rainbowPen === true) currentColor = randomColor();
         })
        
