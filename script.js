@@ -57,12 +57,11 @@ let mouseDown = false;
 
 let randomColor = function() {
     return `hsl(${Math.floor(Math.random()*360)}, 100%, 70%)`
-    //return `#${Math.floor(Math.random()*16777215).toString(16)}`;
 }
 
 function generateCanvas(res) {
     if (res === null || res <= 0 || !(Number.isInteger(parseInt(res)))) return;
-    if (res > 80) res = 80;
+    if (res > 64) res = 64;
 
     currentResolution = res;
 
