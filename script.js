@@ -22,6 +22,11 @@ btnFillBucket.addEventListener('click', () => {
     fillBucket ? (fillBucket = false) : (fillBucket = true);
 })
 
+const btnShader = document.querySelector('#shader');
+btnShader.addEventListener('click', () => {
+    shader ? (shader = false) : (shader = true);
+})
+
 const btnSetColor = document.querySelectorAll('.set-color')
 for (const button of btnSetColor) {
     
@@ -41,10 +46,11 @@ for (const button of btnSetColor) {
     })
 }
 
-let currentResolution = 16
+let currentResolution = 16;
 let currentColor = 'black';
 let rainbowPen = false;
-let fillBucket = false
+let fillBucket = false;
+let shader = false;
 
 
 let mouseDown = false;
@@ -70,8 +76,15 @@ function generateCanvas(res) {
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
         
         pixel.addEventListener('mousedown', (e) => {
+
             if (fillBucket) {
                 colorFill(e.target.id, e.target.style.backgroundColor);
+                return;
+            }
+            
+            if (shader) {
+                shade(e.target.id);
+                mouseDown ? (mouseDown = false) : (mouseDown = true);
                 return;
             }
             
@@ -82,22 +95,39 @@ function generateCanvas(res) {
        
         pixel.addEventListener('mouseover', (e) => {
             if (mouseDown === true) {
+                if (shader === true) {
+                    shade(e.target.id);
+                    return;
+                };
+
                 e.target.style.background = currentColor;
                 if (rainbowPen === true) currentColor = randomColor();
             };
         });
-        
-
-        /*pixel.addEventListener('click', (e) => {
-            colorFill(e.target.id, e.target.style.backgroundColor);
-        });*/
-
 
         container.appendChild(pixel);
     }
 }
 
+function shade(id) {
+    const pixel = document.getElementById(`${id}`);
+    let currentShade = () => pixel.dataset.shade;
+
+    if (currentShade() === 0){
+        return;
+    } else if (currentShade()) {
+        pixel.setAttribute('data-shade', `${currentShade() - 0.2}`);
+    } else {
+        pixel.setAttribute('data-shade', '0.8');
+    }
+
+    pixel.style.filter = `brightness(${currentShade()})`;
+    return;
+}
+
 function colorFill(startPixel, targetColor) {
+    if (targetColor == currentColor) return;
+    
     const fillArray = [parseInt(startPixel)];
 
     function checkPixel(id) {
