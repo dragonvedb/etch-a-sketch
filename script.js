@@ -86,32 +86,34 @@ function generateCanvas(res) {
         pixel.setAttribute('id', `${i+1}`)
         pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
         
-        pixel.addEventListener('click', (e) => {
+        pixel.addEventListener('mousedown', (e) => {
             if (currentInstrument === 'pen') {
                 e.target.style.background = currentColor;
-                
+                mouseDown ? mouseDown = false : mouseDown = true;
+                if (rainbowPen === true) currentColor = randomColor();
+                e.stopPropagation();
+                return;
             }
             
             if (currentInstrument === 'shader') {
                 shade(e.target.id);
-                mouseDown ? (mouseDown = false) : (mouseDown = true);
-            };
-            
-            if (currentInstrument === 'fillBucket') {
-                colorFill(e.target.id, e.target.style.backgroundColor);
+                mouseDown ? mouseDown = false : mouseDown = true;
+                e.stopPropagation();
                 return;
             };
             
-            e.target.style.background = currentColor;
-
-            if (!(mouseDown)) mouseDown = true
-            if (rainbowPen === true) currentColor = randomColor();
+            if (currentInstrument === 'fill-bucket') {
+                colorFill(e.target.id, e.target.style.backgroundColor);
+                if (rainbowPen === true) currentColor = randomColor();
+                return;
+            };
         });
        
         pixel.addEventListener('mouseover', (e) => {
             if (mouseDown === true) {
-                if (shader === true) {
+                if (currentInstrument === 'shader') {
                     shade(e.target.id);
+                    return;
                 };
 
                 e.target.style.background = currentColor;
