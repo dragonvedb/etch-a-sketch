@@ -74,7 +74,7 @@ function generateCanvas(res) {
     if (res === null || res <= 0 || !(Number.isInteger(parseInt(res)))) return;
     if (res > 64) res = 64;
 
-    currentResolution = res;
+    currentResolution = parseInt(res);
 
     container.innerHTML = "";
 
