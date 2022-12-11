@@ -10,10 +10,12 @@
     margin: auto;
     display: flex;
     flex-flow: wrap;
-    background-color: red;
+    gap: 2px;
+    row-gap: 2px;
+    background-color: gray;
 }
 
 #container div {
     background-color: whitesmoke; 
-    border: 1px dotted gray;
+    /*border: 1px dotted gray;*/
 }

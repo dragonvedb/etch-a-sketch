@@ -84,7 +84,7 @@ function generateCanvas(res) {
     for (let i = 0; i < pixelNumber; i++) {
         const pixel = document.createElement('div');
         pixel.setAttribute('id', `${i+1}`)
-        pixel.style.cssText = `width: ${pixelSize}px; heigth: ${pixelSize}px; background-color: whitesmoke`;
+        pixel.style.cssText = `width: ${pixelSize - 2}px; heigth: ${pixelSize - 2}px; background-color: whitesmoke`;
         
         pixel.addEventListener('mousedown', (e) => {
             if (currentInstrument === 'pen') {
