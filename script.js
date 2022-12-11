@@ -107,6 +107,12 @@ function generateCanvas(res) {
                 if (rainbowPen === true) currentColor = randomColor();
                 return;
             };
+
+            if (currentInstrument === 'paint-streak') {
+                paintStreak(e.target.id, e.target.style.backgroundColor);
+                if (rainbowPen === true) currentColor = randomColor();
+                return;
+            };
         });
        
         pixel.addEventListener('mouseover', (e) => {
@@ -161,11 +167,54 @@ function colorFill(startPixel, targetColor) {
 
         const pixel = document.getElementById(`${id}`);
         pixel.style.backgroundColor = currentColor;
+        if (rainbowPen === true) currentColor = randomColor();
 
         checkPixel(id - currentResolution);
         checkPixel(id + currentResolution);
         if (!(id % currentResolution === 0)) checkPixel(id + 1);
         if (!(id % currentResolution === 1)) checkPixel(id - 1);
+
+        fillArray.shift();
+    } while (fillArray.length > 0)
+
+    return;
+}
+
+function paintStreak(startPixel, targetColor) {
+    if (targetColor == currentColor) return;
+    
+    const fillArray = [parseInt(startPixel)];
+    let splash = false;
+
+    function checkPixel(id) {
+        if (document.getElementById(`${id}`)) {
+            var newPixel = document.getElementById(`${id}`);
+        } else return;
+
+        if (newPixel.style.backgroundColor === currentColor) {
+            return;
+        }
+
+        if (newPixel.style.backgroundColor === targetColor) {
+            return fillArray.push(id);
+        } else {
+            return splash = true
+        }
+    }
+
+    do {
+        const id = fillArray[0];
+        splash = false;
+
+        const pixel = document.getElementById(`${id}`);
+        pixel.style.backgroundColor = currentColor;
+        if (rainbowPen === true) currentColor = randomColor();
+
+        checkPixel(id + currentResolution);
+        if (splash) {
+            if (!(id % currentResolution === 0)) checkPixel(id + 1);
+            if (!(id % currentResolution === 1)) checkPixel(id - 1);
+        }
 
         fillArray.shift();
     } while (fillArray.length > 0)
