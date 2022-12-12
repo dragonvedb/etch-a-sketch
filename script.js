@@ -40,7 +40,7 @@ for (const button of btnSetColor) {
         continue;
     }
 
-    button.setAttribute('style', `color: ${button.id};`)
+    button.setAttribute('style', `background-color: ${button.id}; border-color: ${button.id};`)
 
     button.addEventListener('click', (e) => {
         rainbowPen = false;

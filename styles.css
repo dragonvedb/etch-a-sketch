@@ -5,8 +5,12 @@
 }
 
 #device {
-    height: 80%;
-    width: 80%;
+   /* height: 80%;
+    width: 80%;*/
+    box-sizing: content-box;
+
+    width: 850px;
+    margin: 30px auto;
 
     display: grid;
     grid-template-columns: 1fr 600px 1fr; 
@@ -17,11 +21,28 @@
     "canvas-name canvas-name canvas-name";
 
     color: white;
-    background-color: brown;
+    background-color: firebrick;
+    border-radius: 30px;
+    border-bottom: red 15px solid;
+    border-right: red 15px solid;
 }
 
-#device-name { grid-area: device-name; }
-#canvas-panel { grid-area: canvas-name; }
+#device-name { 
+    grid-area: device-name;
+    text-align: center;
+    padding: 30px 0 20px;
+    font-size: 40px;
+    font-weight: bold;
+    color: gold;
+    
+}
+
+#canvas-panel { 
+    grid-area: canvas-name;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #container {
     height: 600px;
@@ -36,11 +57,33 @@
 
 #container div {
     background-color: whitesmoke; 
-    /*border: 1px dotted gray;*/
 }
 
 #palette-panel,
 #instrument-panel {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#palette-panel button,
+#instrument-panel button {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    /*border-width: 4px;
+    border-style: none;*/
+    border: none;
+
+    box-shadow: 4px 4px 15px 0px;
+}
+
+#palette-panel button:active,
+#instrument-panel button:active {
+    /*border-width: 4px;
+    border-style: solid;*/
+
+    box-shadow: 0 1px 8px inset;
+    filter: brightness(1.2);
 }
