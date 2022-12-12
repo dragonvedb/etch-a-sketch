@@ -19,21 +19,15 @@ for (const button of btnSetCanvas) {
     })
 }
 
-const btnFillBucket = document.querySelector('#fill-bucket');
-btnFillBucket.addEventListener('click', () => {
-    fillBucket ? (fillBucket = false) : (fillBucket = true);
-})
-
-const btnShader = document.querySelector('#shader');
-btnShader.addEventListener('click', () => {
-    shader ? (shader = false) : (shader = true);
-})
-
 const btnSetColor = document.querySelectorAll('.set-color')
 for (const button of btnSetColor) {
     
     if (button.id === 'rainbow') {
         button.addEventListener('click', (e) => {
+            if (rainbowPen) {
+                document.getElementById('rainbow').classList.remove('on')
+            } else document.getElementById(`${currentColor}`).classList.remove('on')    
+            e.target.classList.add('on');
             rainbowPen = true;
             currentColor = randomColor();
         })
@@ -45,6 +39,10 @@ for (const button of btnSetColor) {
     button.setAttribute('style', `background-color: ${button.id};`)
 
     button.addEventListener('click', (e) => {
+        if (rainbowPen) {
+            document.getElementById('rainbow').classList.remove('on')
+        } else document.getElementById(`${currentColor}`).classList.remove('on')
+        e.target.classList.add('on');
         rainbowPen = false;
         currentColor = e.target.id;
     })
@@ -53,12 +51,14 @@ for (const button of btnSetColor) {
 const btnSetInstrument = document.querySelectorAll('.set-instrument')
 for (const button of btnSetInstrument) {
     button.addEventListener('click', (e) => {
+        document.getElementById(`${currentInstrument}`).classList.remove('on')
+        e.target.classList.add('on');
         currentInstrument = e.target.id;
     })
 }
 
 let currentResolution = 16;
-let currentColor = 'black';
+let currentColor = 'hsl(0, 0%, 15%)';
 let currentInstrument = 'pen'
 
 let rainbowPen = false;

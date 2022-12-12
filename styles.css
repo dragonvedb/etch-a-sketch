@@ -71,7 +71,7 @@
 #instrument-panel button {
     border-radius: 100%;
     border: none;
-    
+    transition: 0.2s;
 }
 
 #palette-panel button {
@@ -87,7 +87,9 @@
 }
 
 #palette-panel button:active,
-#instrument-panel button:active {
+#palette-panel button.on,
+#instrument-panel button:active,
+#instrument-panel button.on {
     box-shadow: 2px 2px 10px inset;
     filter: brightness(1.4);
 }
