@@ -37,10 +37,12 @@ for (const button of btnSetColor) {
             rainbowPen = true;
             currentColor = randomColor();
         })
+        button.setAttribute('style', `background-image: linear-gradient(135deg, hsl(360, 100%, 60%) 10%, hsl(20, 100%, 60%), hsl(52, 100%, 60%), hsl(115, 100%, 60%), hsl(190, 100%, 60%), hsl(230, 100%, 60%), rebeccapurple 90%);
+        `)
         continue;
     }
 
-    button.setAttribute('style', `background-color: ${button.id}; border-color: ${button.id};`)
+    button.setAttribute('style', `background-color: ${button.id};`)
 
     button.addEventListener('click', (e) => {
         rainbowPen = false;
@@ -60,10 +62,6 @@ let currentColor = 'black';
 let currentInstrument = 'pen'
 
 let rainbowPen = false;
-let fillBucket = false;
-let shader = false;
-
-
 let mouseDown = false;
 
 let randomColor = function() {
