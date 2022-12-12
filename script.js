@@ -67,7 +67,7 @@ let shader = false;
 let mouseDown = false;
 
 let randomColor = function() {
-    return `hsl(${Math.floor(Math.random()*360)}, 100%, 70%)`
+    return `hsl(${Math.floor(Math.random()*360)}, 100%, 65%)`
 }
 
 function generateCanvas(res) {
