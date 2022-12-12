@@ -78,13 +78,13 @@ function generateCanvas(res) {
 
     container.innerHTML = "";
 
-    const pixelSize = 800 / res;
+    const pixelSize = 600 / res;
     const pixelNumber = res * res;
 
     for (let i = 0; i < pixelNumber; i++) {
         const pixel = document.createElement('div');
         pixel.setAttribute('id', `${i+1}`)
-        pixel.style.cssText = `width: ${pixelSize - 2}px; heigth: ${pixelSize - 2}px; background-color: whitesmoke`;
+        pixel.style.cssText = `width: ${pixelSize - 1}px; heigth: ${pixelSize - 1}px; background-color: whitesmoke`;
         
         pixel.addEventListener('mousedown', (e) => {
             if (currentInstrument === 'pen') {
@@ -191,9 +191,9 @@ function paintStreak(startPixel, targetColor) {
             var newPixel = document.getElementById(`${id}`);
         } else return;
 
-        if (newPixel.style.backgroundColor === currentColor) {
+        /*if (newPixel.style.backgroundColor === currentColor) {
             return;
-        }
+        }*/
 
         if (newPixel.style.backgroundColor === targetColor) {
             return fillArray.push(id);

@@ -9,37 +9,41 @@
 </head>
 
 <body>
-    <div id="canvas-panel">
-        <button id="reset">reset</button>
-        <button class="set-canvas" data-res="16">SMALL CANVAS</button>
-        <button class="set-canvas" data-res="32">MEDIUM CANVAS</button>
-        <button class="set-canvas" data-res="64">LARGEST CANVAS</button>
-        <button id="new-canvas">CUSTOM CANVAS</button>
-    </div>
+    <div id="device">
+        <div id="device-name">Whack-a-Sketch</div>
 
-    <div id="palette-panel">
-        <button class="set-color" id="whitesmoke">White</button>
-        <button class="set-color" id="black">Black</button>
-        <button class="set-color" id="grey">Grey</button>
-        <button class="set-color" id="red">Red</button>
-        <button class="set-color" id="orange">Orange</button>
-        <button class="set-color" id="yellow">Yellow</button>
-        <button class="set-color" id="green">Green</button>
-        <button class="set-color" id="cyan">Cyan</button>
-        <button class="set-color" id="blue">Blue</button>
-        <button class="set-color" id="purple">Purple</button>
-        <button class="set-color" id="pink">Pink</button>
-        <button class="set-color" id="rainbow">RaInBoW</button>
-    </div>
+        <div id="palette-panel">
+            <button class="set-color" id="whitesmoke">White</button>
+            <button class="set-color" id="black">Black</button>
+            <button class="set-color" id="grey">Grey</button>
+            <button class="set-color" id="red">Red</button>
+            <button class="set-color" id="orange">Orange</button>
+            <button class="set-color" id="yellow">Yellow</button>
+            <button class="set-color" id="green">Green</button>
+            <button class="set-color" id="cyan">Cyan</button>
+            <button class="set-color" id="blue">Blue</button>
+            <button class="set-color" id="purple">Purple</button>
+            <button class="set-color" id="pink">Pink</button>
+            <button class="set-color" id="rainbow">RaInBoW</button>
+        </div>
 
-    <div id="instrument-panel">
-        <button class="set-instrument" id="pen">Pen</button>
-        <button class="set-instrument" id="shader">Shader</button>
-        <button class="set-instrument" id="fill-bucket">Bucket</button>
-        <button class="set-instrument" id="paint-streak">Streak</button>
-    </div>
+        <div id="container">
+        </div>
 
-    <div id="container">
+        <div id="instrument-panel">
+            <button class="set-instrument" id="pen">Pen</button>
+            <button class="set-instrument" id="shader">Shader</button>
+            <button class="set-instrument" id="fill-bucket">Bucket</button>
+            <button class="set-instrument" id="paint-streak">Streak</button>
+        </div>
+
+        <div id="canvas-panel">
+            <button id="reset">reset</button>
+            <button class="set-canvas" data-res="16">SMALL CANVAS</button>
+            <button class="set-canvas" data-res="32">MEDIUM CANVAS</button>
+            <button class="set-canvas" data-res="64">LARGEST CANVAS</button>
+            <button id="new-canvas">CUSTOM CANVAS</button>
+        </div>
     </div>
     
     <script src="script.js"></script>
