@@ -80,13 +80,13 @@
 #palette-panel button {
     height: 45px;
     width: 45px;
-    box-shadow: 2px 2px 8px;
+    box-shadow: 2px 2px 8px 0px, -2px -2px 10px -5px inset;
 }
 
 #instrument-panel button {
     height: 60px;
     width: 60px;
-    box-shadow: 3px 3px 12px;
+    box-shadow: 3px 3px 12px, -3px -3px 10px -3px inset;
 }
 
 #instrument-panel p {
@@ -97,9 +97,9 @@
 #palette-panel button.on,
 #instrument-panel button:active,
 #instrument-panel button.on {
-    box-shadow: 2px 2px 10px inset;
+    box-shadow: 5px 5px 15px 0px inset;
     filter: brightness(1.4);
-    top: 4px;
+    top: 3px;
 }
 
 #canvas-panel button {
@@ -112,16 +112,23 @@
     border-bottom: solid 8px gray;
     border-radius: 3px;
     box-sizing: content-box;
+    box-shadow: 3px 3px 15px -2px;
 
     transition: 0.1s;
-}
-
-#canvas-panel button:active {
-    height: 70px;
-    margin-top: 10px;
-    border-bottom: solid gray 2px;
 }
 
 #canvas-panel button#reset {
     width: 70px;
 }
+
+#canvas-panel button:active {
+    height: 70px;
+    margin-top: 12px;
+    border-bottom: solid gray 2px;
+    box-shadow: 5px 0px 10px -5px inset;
+}
+
+#canvas-panel button#reset:active {
+    box-shadow: 0px 0px 10px -5px inset;
+}
+
