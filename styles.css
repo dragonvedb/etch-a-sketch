@@ -41,7 +41,6 @@
     grid-area: canvas-name;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 #container {
@@ -75,20 +74,8 @@
     border: none;
     transition: 0.2s;
     margin: 5px;
+    position: relative;
 }
-
-
-
-/*#palette-panel div::before {
-    content: '';
-    position: absolute;
-    height: 45px;
-    width: 45px;
-    border: hsl(0, 80%, 40%) solid 5px;
-    border-radius: 50%;
-    z-index: 5;
-    pointer-events: none;
-}*/
 
 #palette-panel button {
     height: 45px;
@@ -112,4 +99,29 @@
 #instrument-panel button.on {
     box-shadow: 2px 2px 10px inset;
     filter: brightness(1.4);
+    top: 4px;
+}
+
+#canvas-panel button {
+    height: 70px;
+    width: 132px;
+    margin-top: 5px;
+    padding: 0;
+
+    border: solid 1px gray;
+    border-bottom: solid 8px gray;
+    border-radius: 3px;
+    box-sizing: content-box;
+
+    transition: 0.2s;
+}
+
+#canvas-panel button:active {
+    height: 70px;
+    margin-top: 12px;
+    border-bottom: solid gray 0px;
+}
+
+#canvas-panel button#reset {
+    width: 70px;
 }
