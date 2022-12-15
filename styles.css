@@ -113,13 +113,13 @@
     border-radius: 3px;
     box-sizing: content-box;
 
-    transition: 0.2s;
+    transition: 0.1s;
 }
 
 #canvas-panel button:active {
     height: 70px;
-    margin-top: 12px;
-    border-bottom: solid gray 0px;
+    margin-top: 10px;
+    border-bottom: solid gray 2px;
 }
 
 #canvas-panel button#reset {
