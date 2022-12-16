@@ -144,6 +144,7 @@ body {
 #canvas-panel button#reset {
     width: 70px;
     margin-right: 8px;
+    margin-left: 5px;
     font-size: 45px;
     color: hsl(130, 50%, 50%);
 }
@@ -175,7 +176,7 @@ body {
     background-color: hsla(0, 80%, 55%, 0.8);
     color: gold;
     font-family: 'Share Tech Mono', monospace;
-    transition: ease-out 0.5s;
+    transition: ease-out 0.3s;
 }
 
 footer {
