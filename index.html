@@ -53,17 +53,20 @@
             <p>Pen</p>
             <button class="set-instrument" id="shader"></button>
             <p>Shader</p>
-            <button class="set-instrument" id="fill-bucket"></button>
-            <p>Bucket</p>
+            <button class="set-instrument warn" id="fill-bucket"></button>
+            <p class="warn">
+                Bucket
+                <div id="warning">Not recommended with canvas sizes bigger than 16x16 !!!</div>
+            </p>
             <button class="set-instrument" id="paint-streak"></button>
             <p>Streak</p>
         </div>
 
         <div id="canvas-panel">
             <button id="reset">⭯</button>
-            <button class="set-canvas" data-res="16">SMALL CANVAS</button>
-            <button class="set-canvas" data-res="32">MEDIUM CANVAS</button>
-            <button class="set-canvas" data-res="64">LARGEST CANVAS</button>
+            <button class="set-canvas" data-res="16">SMALL 16x16</button>
+            <button class="set-canvas" data-res="32">MEDIUM 32x32</button>
+            <button class="set-canvas" data-res="64">LARGEST 64x64</button>
             <button id="new-canvas">CUSTOM CANVAS</button>
         </div>
     </div>

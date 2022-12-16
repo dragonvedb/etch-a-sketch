@@ -57,6 +57,15 @@ for (const button of btnSetInstrument) {
     })
 }
 
+const warnTrigger = document.querySelector('.warn')
+const warning = document.querySelector('#warning')
+warnTrigger.addEventListener('mouseover', () => {
+        warning.style.opacity = '1';
+    })
+warnTrigger.addEventListener('mouseleave', () => {
+        warning.style.opacity = '0';
+    })
+
 let currentResolution = 16;
 let currentColor = 'hsl(0, 0%, 15%)';
 let currentInstrument = 'pen'
