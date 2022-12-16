@@ -12,6 +12,7 @@ body {
 
 body {
     background-image: linear-gradient(to left top, aquamarine, dodgerblue, rebeccapurple);
+    font-size: 20px;
 }
 
 #device {

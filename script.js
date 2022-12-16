@@ -115,7 +115,7 @@ function generateCanvas(res) {
                 return;
             };
 
-            if (currentInstrument === 'paint-streak') {
+            if (currentInstrument === 'paint-stream') {
                 paintStreak(e.target.id, e.target.style.backgroundColor);
                 if (rainbowPen === true) currentColor = randomColor();
                 return;
