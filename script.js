@@ -85,7 +85,7 @@ function generateCanvas(res) {
 
     container.innerHTML = "";
 
-    const pixelSize = container.clientWidth / res;
+    const pixelSize = 600 / res;
     const pixelNumber = res * res;
 
     for (let i = 0; i < pixelNumber; i++) {
