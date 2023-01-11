@@ -103,8 +103,8 @@ function generateCanvas(res) {
             }
             
             if (currentInstrument === 'shader') {
-                shade(e.target.id);
                 mouseDown ? mouseDown = false : mouseDown = true;
+                if (mouseDown == true) shade(e.target.id);
                 e.stopPropagation();
                 return;
             };
